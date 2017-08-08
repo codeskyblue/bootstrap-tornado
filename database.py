@@ -14,7 +14,6 @@ import rethinkdb as r
 from tornado import gen
 from tornado import ioloop
 
-import utils
 from settings import *
 
 
@@ -24,11 +23,12 @@ def setup():
     def safe_run(rql):
         try:
             rql.run(conn)
-        except r.RqlRuntimeError:
+        except r.RqlRuntimeError as e:
             pass
 
     safe_run(r.db_create(RDB_NAME))
-    safe_run(r.db(RDB_NAME).table("users").index_create("token"))
+    safe_run(r.db(RDB_NAME).table_create("users", primary_key="email"))
+    # safe_run(r.db(RDB_NAME).table("users").index_create("token"))
     print 'Database init success'
     conn.close()
 
@@ -66,13 +66,13 @@ class DB(object):
             - email(string): user id
         """
         ret = yield self.run(r.table("users").get(user['email']).update({
-            "name": user['name'],
+            "fullname": user['name'],
             "lastLoggedInAt": time_now(),
         }))
         if ret['skipped']:
             yield self.run(r.table("users").insert({
                 "email": user['email'],
-                'name': user['name'],
+                'fullname': user['name'],
                 'lastLoggedInAt': time_now(),
                 'createdAt': time_now(),
             }))

@@ -1,0 +1,22 @@
+{
+  "name": "bootstrap-tornado",
+  "homepage": "https://github.com/codeskyblue/bootstrap-tornado",
+  "authors": [
+    "shengxiang <codeskyblue@gmail.com>"
+  ],
+  "description": "",
+  "main": "",
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "static/components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "vue": "^2.4.2",
+    "jquery": "^3.2.1"
+  }
+}
