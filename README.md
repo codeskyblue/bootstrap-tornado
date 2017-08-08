@@ -10,7 +10,7 @@ bower install
 pip install -r requirements.txt
 ```
 
-Install rethinkdb 
+Install [rethinkdb](https://www.rethinkdb.com/docs/install/)
 
 # Usage
 ```
