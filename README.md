@@ -1,6 +1,8 @@
 # bootstrap-tornado
 Write a tornado app from a template
 
+[python](https://python.org) + [tornado](http://www.tornadoweb.org) + [rethinkdb](https://www.rethinkdb.com/) + [vue](http://vuejs.org/)
+
 # Install
 ```
 npm i -g bower
