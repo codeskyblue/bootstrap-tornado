@@ -16,6 +16,8 @@ from settings import COOKIE_SECRET
 import handlers.page
 import handlers.api
 
+import template_filters
+
 
 def make_app(**settings):
     settings['template_path'] = 'templates'
@@ -23,6 +25,7 @@ def make_app(**settings):
     settings['cookie_secret'] = 'SECRET:_'+COOKIE_SECRET
     settings['login_url'] = '/login'
     settings['websocket_ping_interval'] = 15
+    settings['ui_methods'] = template_filters
     return tornado.web.Application([
         (r"/", handlers.page.MainHandler),
         (r"/login", handlers.page.LoginHandler),

@@ -19,13 +19,14 @@ Install [rethinkdb](https://www.rethinkdb.com/docs/install/)
 python -u web.py --port 6000 # --debug
 ```
 
-Environments can be used to set Rethinkdb
+Environments can be used to set Rethinkdb, defaults are
 
-- RDB_NAME
-- RDB_HOST
-- RDB_PORT
-
-- SECRET_COOKIE
+```
+- RDB_NAME=bootstrap-tornado
+- RDB_HOST=localhost
+- RDB_PORT=28015
+- COOKIE_SECRET=""
+```
 
 See [settings.py](settings.py) for more details.
 

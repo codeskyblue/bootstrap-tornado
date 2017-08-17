@@ -1,44 +1,39 @@
-<html>
-
-<head>
-  <title>Bootstrap tornado</title>
-</head>
-
-<body>
-  <div id="app">
-    <h1>Bootstrap tornado</h1>
-    <div v-if="user">
-      <span v-text="user.fullname"></span>
-      <a href="/logout">Logout</a>
-    </div>
-    <div v-else>
-      <a href="/login">Login</a>
-    </div>
-    <hr/> bootstrap-tornado github: <a href="https://github.com/codeskyblue/bootstrap-tornado"> https://github.com/codeskyblue/bootstrap-tornado</a>
+{% extends "layout.html" %}
+<!-- main content -->
+{% block content %}
+<div id="app">
+  <h1>Bootstrap tornado</h1>
+  <div v-if="user">
+    <span v-text="user.fullname"></span>
+    <a href="/logout">Logout</a>
   </div>
+  <div v-else>
+    <a href="/login">Login</a>
+  </div>
+  <hr/> bootstrap-tornado github: <a href="https://github.com/codeskyblue/bootstrap-tornado"> https://github.com/codeskyblue/bootstrap-tornado</a>
+</div>
+{% end %}
 
-  <script src="{{static_url('components/vue/dist/vue.min.js')}}"></script>
-  <script src="{{static_url('components/jquery/dist/jquery.min.js')}}"></script>
-  <script>
-    new Vue({
-      el: "#app",
-      data: {
-        user: null
-      },
-      mounted: function() {
-        $.ajax({
-            url: "/api/v1/user",
-          })
-          .then(function(ret) {
-            if (ret.success) {
-              this.user = ret.value;
-            } else {
-              console.log("user is not logged in")
-            }
-          }.bind(this))
-      }
-    })
-  </script>
-</body>
-
-</html>
+<!-- js -->
+{% block js %}
+<script>
+  new Vue({
+    el: "#app",
+    data: {
+      user: null
+    },
+    mounted: function() {
+      $.ajax({
+          url: "/api/v1/user",
+        })
+        .then(function(ret) {
+          if (ret.success) {
+            this.user = ret.value;
+          } else {
+            console.log("user is not logged in")
+          }
+        }.bind(this))
+    }
+  })
+</script>
+{% end %}

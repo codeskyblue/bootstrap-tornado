@@ -1,0 +1,70 @@
+<style>
+  .navbar-nav>li>a.profile-image {
+    padding-top: 10px;
+    padding-bottom: 10px;
+  }
+  
+  .navbar-nav>li>a.profile-image>img {
+    padding-right: 10px;
+  }
+</style>
+<nav class="navbar navbar-default navbar-fixed-top">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="/">
+        <span class='color-green'>RTB</span>
+      </a>
+    </div>
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse">
+      <ul class="nav navbar-nav">
+        <li>
+          <a href="/">
+            <span class="glyphicon glyphicon-link"></span> 我是一个链接
+          </a>
+        </li>
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+            <span class="glyphicon glyphicon-link"></span> 其他链接
+            <span class="caret"></span>
+          </a>
+          <ul class="dropdown-menu" role="menu">
+            <li>
+              <a target="_blank" href="https://github.com/codeskyblue/bootstrap-tornado">
+                项目地址
+              </a>
+            </li>
+          </ul>
+        </li>
+      </ul>
+      <ul class="nav navbar-nav navbar-right" style="margin-right: 15px">
+        {% if current_user %}
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle profile-image" data-toggle="dropdown">
+            <img class="img-circle img-nav-user" src="https://cn.gravatar.com/avatar/{{hashmd5(current_user['email'])}}?s=26" />{{current_user['fullname']}}
+            <span class="caret"></span>
+            <ul class="dropdown-menu">
+              <li>
+                <a href="/settings">
+                  <span class="glyphicon glyphicon-cog"></span> Settings
+                </a>
+              </li>
+              <!-- <li class="divider"></li> -->
+              <li>
+                <a href="/logout">
+                  <i class="fa fa-sign-out"></i> Sign-out
+                </a>
+              </li>
+            </ul>
+          </a>
+        </li>
+        {% end %}
+      </ul>
+    </div>
+  </div>
+</nav>

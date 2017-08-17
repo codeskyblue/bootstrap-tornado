@@ -13,18 +13,13 @@ from .common import BaseHandler
 class APIUserHandler(BaseHandler):
     @gen.coroutine
     def get(self):
-        user_id = self.get_secure_cookie("user_id")
-        user = None
-        if user_id:
-            user = yield db.get_user(user_id)
-        
-        if not user:
+        if self.current_user:
+            self.write_json({
+                "success": True,
+                "value": self.current_user,
+            })
+        else:
             self.write({
                 "success": False,
                 "description": "user is not logged in"
-            })
-        else:
-            self.write_json({
-                "success": True,
-                "value": user,
             })

@@ -34,7 +34,7 @@ class LoginHandler(tornado.web.RequestHandler, OpenIdMixin):
     @tornado.web.asynchronous
     def get(self):
         """"
-        Support two type login, openid and TOP(jwt)
+        Support one type login: openid
         """
         # check callback
         if self.get_argument('openid.mode', False):

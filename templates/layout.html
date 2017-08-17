@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <!-- commit if you need favicon.png -->
+  <!-- <link rel="icon" href="{{static_url('favicon.png')}}" type="image/x-icon" /> -->
+  <title>{% block title %} bootstrap-tornado {% end %}</title>
+  <!-- Bootstrap -->
+  <link rel="stylesheet" type="text/css" href="{{static_url('components/bootstrap/dist/css/bootstrap.min.css')}}">
+  <link rel="stylesheet" type="text/css" href="{{static_url('components/font-awesome/css/font-awesome.min.css')}}">
+  <!-- style -->
+  <style>
+    body {
+      margin-top: 50px;
+    }
+  </style>
+  {% block style %} {% end %}
+</head>
+
+<body>
+  {% include "navbar.html" %}
+  <div class="container" id="app">
+    {% block content %} {% end %}
+  </div>
+
+  <script src="{{static_url('components/vue/dist/vue.min.js')}}"></script>
+  <script src="{{static_url('components/jquery/dist/jquery.min.js')}}"></script>
+  <script src="{{static_url('components/bootstrap/dist/js/bootstrap.min.js')}}"></script>
+  {% block js %} {% end %}
+</body>
+
+</html>
